@@ -1,2 +1,3 @@
 # problemes-dprot
-Coding examples and problems from the subject Data Protection
+
+Coding examples and exercises from the subject Data Protection.
