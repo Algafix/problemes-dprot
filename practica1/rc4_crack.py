@@ -29,7 +29,8 @@ with open('data_m0.txt', mode='r') as csv_file:
 frequency = max(m0_freq_list)
 m0 = m0_freq_list.index(frequency)
 verification = chr(m0) == o_m0
-print('m[0]: ' + chr(m0) + '\t\t(with freq. ' + str(frequency) + ')\t\t' + str(verification))
+print('m[0]: ' + chr(m0) + '\t\t(with freq. ' + str(frequency) + 
+        ')\t\t' + str(verification))
 print('=============================')
 
 ############# Guessing key #############
@@ -64,7 +65,8 @@ with open('data_k.txt', mode='r') as csv_file:
             k = k_freq_list.index(frequency)
             recovered_key.append(k)
             verification = k == int('0x'+o_key[k_byte*2:k_byte*2+2],0)
-            print('k['+str(k_byte)+']: ' + "{0:#0{1}x}".format(k,4) + '\t(with freq. ' + str(frequency) + ')\t\t' + str(verification))
+            print('k['+str(k_byte)+']: ' + "{0:#0{1}x}".format(k,4) + 
+                    '\t(with freq. ' + str(frequency) + ')\t\t' + str(verification))
 
             # Update the counters for next k guessing
             iv_counter += 1
