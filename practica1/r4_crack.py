@@ -29,7 +29,7 @@ with open('data_m0.txt', mode='r') as csv_file:
 frequency = max(m0_freq_list)
 m0 = m0_freq_list.index(frequency)
 verification = chr(m0) == o_m0
-print('m[0]: ' + chr(m0) + '\t(with freq. ' + str(frequency) + ')\t\t' + str(verification))
+print('m[0]: ' + chr(m0) + '\t\t(with freq. ' + str(frequency) + ')\t\t' + str(verification))
 print('=============================')
 
 ############# Guessing key #############
