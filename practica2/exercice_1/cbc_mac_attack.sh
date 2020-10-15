@@ -22,7 +22,7 @@ rm tmp_*
 
 # Padding: each padding byte has the value of the number of bytes until 128 bits (16 bytes) multiple.
 
-# Attack: head.dat || mess1.dat || padding || tag1.dat || mess2.dat -> tag2.dat
+# Attack: head.dat || mess1.dat || padding || tag1.dat xor head.dat|| mess2.dat -> tag2.dat
 
 # Start of the file
 cat head.dat mess1.dat > forgery.dat
