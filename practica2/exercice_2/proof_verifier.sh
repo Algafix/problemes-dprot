@@ -46,4 +46,7 @@ else
     echo "Not verified"
 fi
 
+echo "Original root: $root"
+echo "Computed root: $hash"
+
 
