@@ -42,8 +42,10 @@ cat mess2.dat >> forgery.dat
 # Compute the CMAC
 openssl enc -aes-128-cbc -K `cat hexkey.dat` -iv 0 -in forgery.dat | tail -c 16 > tag2_forged.dat
 
+# Show the two tags
 
-
+echo "Original tag2.dat: $(cat tag2.dat | xxd -p)"
+echo "Forged tag2_forget.dat: $(cat tag2_forged.dat | xxd -p)"
 
 
 
