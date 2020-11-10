@@ -3,10 +3,6 @@
 my_keys=$1
 peer_keys=$2
 
-# Generate keys
-#openssl genpkey -paramfile param.pem -out ephpkey.pem
-#openssl pkey -in ephpkey.pem -pubout -out ephpubkey.pem
-
 # Generae common secret
 openssl pkeyutl -inkey ${my_keys}_pkey.pem -peerkey ${peer_keys}_pubkey.pem -derive -out common.bin
 cat common.bin | openssl dgst -sha256 -binary > commonkey.bin
