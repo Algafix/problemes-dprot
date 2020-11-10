@@ -17,5 +17,14 @@ head -c 16 d_commonkey.bin > d_k1.bin
 tail -c 16 d_commonkey.bin > d_k2.bin
 
 # Authenticate and decrypt
-cat d_iv.bin d_ciphertext.bin | openssl dgst -sha256 -binary -mac hmac -macopt hexkey:`cat d_k2.bin | xxd -p` -out d_tag.bin
-openssl enc -d -aes-128-cbc -K `cat d_k1.bin | xxd -p` -iv `cat d_iv.bin | xxd -p` -in d_ciphertext.bin -out decrypted.txt
+cat d_iv.bin d_ciphertext.bin | openssl dgst -sha256 -binary -mac hmac -macopt hexkey:`cat d_k2.bin | xxd -p` -out recomputed_tag.bin
+
+STATUS="$(cmp --silent d_tag.bin recomputed_tag.bin; echo $?)"
+if [[ $STATUS -ne 0 ]]
+then
+    echo "Diferent Tag! Not authenticated."
+else
+    echo "Same Tag."
+    openssl enc -d -aes-128-cbc -K `cat d_k1.bin | xxd -p` -iv `cat d_iv.bin | xxd -p` -in d_ciphertext.bin -out decrypted.txt
+    echo "Decrypted text in decrypted.txt"
+fi
